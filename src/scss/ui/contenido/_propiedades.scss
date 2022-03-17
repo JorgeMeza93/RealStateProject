@@ -1,0 +1,58 @@
+@use "../../base/variables";
+@use "../../base/mixins";
+
+.propiedades{
+    margin-top: 5rem;
+    @include mixins.tablet{ 
+        margin-top: 10rem;
+    }
+    &__heading{
+        @include mixins.heading;
+    }
+    &__grid{
+        @include mixins.grid(1,2rem);
+        @include mixins.tablet{
+            @include mixins.grid(3, 2rem);
+        }
+    }
+}
+.propiedad{
+    background-color: variables.$blanco;
+    &__imagen{
+        aspect-ratio: 10/6;
+        background-size: auto 140%;
+        position:relative;
+    }
+    @for $i from 1 through 6{
+        $imagen: "../img/propiedad_" + $i + ".jpg";
+        &:nth-child(#{$i}) &__imagen{
+            background-image: linear-gradient(to bottom, transparentize(variables.$negro, 1%) 0%, 
+                transparentize(variables.$negro, .3%) 100% ), url($imagen);
+        }
+    }
+    &__nombre{
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        color: variables.$blanco;
+        font-size: 2.4rem;
+    }
+    &__contenido{
+        padding: 2rem;
+    }
+    &__precio{
+       font-size: 3rem;
+        margin: 0;
+    }
+    &__texto{
+        margin-bottom: 0;
+    }
+    &__enlace{
+        @include mixins.boton(variables.$primario, variables.$blanco);
+        display: block;
+        text-transform: uppercase;
+    }
+
+}
+
+

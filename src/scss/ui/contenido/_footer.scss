@@ -1,0 +1,50 @@
+@use "../../base/variables";
+@use "../../base/mixins";
+
+.footer{
+    background-color: variables.$primario;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    &__grid{
+        @include mixins.tablet{
+            @include mixins.grid(3, 2rem);
+        }
+    }
+    &__heading{
+        text-transform: uppercase;
+        color: variables.$blanco;
+        font-size: 2rem;
+    }
+    &__texto{
+        color: variables.$blanco;
+    }
+    &__navegacion{
+        display: flex;
+        flex-direction: column;
+    }
+    &__link{
+        color: variables.$blanco;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+    &__copyright{
+        margin: 5rem 0 0 0;
+        background-color: darken(variables.$primario, 10%);
+        text-align: center;
+        padding: 1rem;
+        color: variables.$blanco;
+    }
+    &__autor{
+        margin: 0;
+        background-color: darken(variables.$primario, 10%);
+        &::after{
+            content: "Created by: Jorge Meza, 16/03/2022.";
+            color: gold;
+            font-size: 1.4rem;
+            text-decoration: wavy;
+        }
+    }
+}
